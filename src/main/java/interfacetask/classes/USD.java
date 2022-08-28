@@ -1,8 +1,8 @@
 package interfacetask.classes;
 
-import interfacetask.interfaces.Money;
+import interfacetask.interfaces.IMoney;
 
-public class USD implements Money {
+public class USD implements IMoney {
     private double money;
     private static final String currencyName="USD";
 

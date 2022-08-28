@@ -1,10 +1,10 @@
 package interfacetask.classes;
 
-import interfacetask.interfaces.Money;
+import interfacetask.interfaces.IMoney;
 
 import java.util.Objects;
 
-public class RUB implements Money {
+public class RUB implements IMoney {
     private double money;
     private final String currencyName="RUB";
 

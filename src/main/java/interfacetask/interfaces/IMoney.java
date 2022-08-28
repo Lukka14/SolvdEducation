@@ -1,6 +1,6 @@
 package interfacetask.interfaces;
 
-public interface Money {
+public interface IMoney {
     double usdRateInGEL=2.73;
     double usdRateInRUB=60.36;
     String getCurrencyName();

@@ -48,6 +48,8 @@ public class Main {
         myLinkedList.add("Joshua");
         System.out.println(myLinkedList.getLastElement());
 
+
+
     }
 
     public static <T> void display(Collection<T> list){

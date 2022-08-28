@@ -2,10 +2,10 @@ package interfacetask.classes;
 
 import interfacetask.extra.Bank;
 import interfacetask.extra.InvalidAmountException;
-import interfacetask.interfaces.Money;
-import interfacetask.interfaces.Technobank;
+import interfacetask.interfaces.IMoney;
+import interfacetask.interfaces.ITechnobank;
 
-public class TechnoBank1 extends Bank implements Technobank {
+public class TechnoBank1 extends Bank implements ITechnobank {
     final String branch="Technobank branch 1";
 
     @Override
@@ -18,11 +18,11 @@ public class TechnoBank1 extends Bank implements Technobank {
 
             if(from.equalsIgnoreCase("usd")) {
                 if (to.equalsIgnoreCase("gel")) {
-                    double result=amount * Money.usdRateInGEL;
+                    double result=amount * IMoney.usdRateInGEL;
                     depositMoney(new GEL(result - (result * getTaxRate() / 100)));
                 }
                 else if (to.equalsIgnoreCase("rub")) {
-                    double result=amount * Money.usdRateInRUB;
+                    double result=amount * IMoney.usdRateInRUB;
                     depositMoney(new RUB(result - (result * getTaxRate() / 100)));
                 }
                 else throw new IllegalArgumentException("Can not convert "+amount+ " " +from+" to "+to);
@@ -31,11 +31,11 @@ public class TechnoBank1 extends Bank implements Technobank {
 
             else if(from.equalsIgnoreCase("gel")){
                 if (to.equalsIgnoreCase("usd")) {
-                    double result = amount/ Money.usdRateInGEL ;
+                    double result = amount/ IMoney.usdRateInGEL ;
                     depositMoney(new USD(result - (result * getTaxRate() / 100)));
                 }
                 else if (to.equalsIgnoreCase("rub")) {
-                    double result=amount * Money.usdRateInRUB;
+                    double result=amount * IMoney.usdRateInRUB;
                     depositMoney(new RUB(result - (result * getTaxRate() / 100)));
                 }
                 else throw new IllegalArgumentException("Can not convert "+amount+ " " +from+" to "+to);
@@ -44,11 +44,11 @@ public class TechnoBank1 extends Bank implements Technobank {
 
             else if(from.equalsIgnoreCase("rub")) {
                 if (to.equalsIgnoreCase("gel")) {
-                    double result=amount / Money.usdRateInRUB * Money.usdRateInGEL;
+                    double result=amount / IMoney.usdRateInRUB * IMoney.usdRateInGEL;
                     depositMoney(new GEL(result - (result * getTaxRate() / 100)));
                 }
                 if (to.equalsIgnoreCase("usd")) {
-                    double result=amount / Money.usdRateInRUB ;
+                    double result=amount / IMoney.usdRateInRUB ;
                     depositMoney(new USD(result - (result * getTaxRate() / 100)));
                 }
                 else throw new IllegalArgumentException("Can not convert "+amount+ " " +from+" to "+to);

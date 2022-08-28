@@ -12,12 +12,6 @@ public enum Directions {
         this.dirName=dirName;
     }
 
-    public static void showAllValues(){
-        for(Directions dir: Directions.values()){
-            System.out.println(dir);
-        }
-    }
-
     // getter & setter
     public String getDirName() {
         return dirName;

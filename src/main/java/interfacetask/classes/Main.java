@@ -1,9 +1,6 @@
 package interfacetask.classes;
 
-import interfacetask.classes.GEL;
-import interfacetask.classes.HumanClass;
-import interfacetask.classes.TechnoBank1;
-import interfacetask.interfaces.Money;
+import interfacetask.interfaces.IMoney;
 
 public class Main {
     public static void main(String[] args) {
@@ -19,7 +16,7 @@ public class Main {
 
 
         TechnoBank1 technobank= new TechnoBank1();
-        Money gel100=new GEL(100);
+        IMoney gel100=new GEL(100);
 
         technobank.depositMoney(gel100);
         technobank.convertCurrency("gel","Usd",70);

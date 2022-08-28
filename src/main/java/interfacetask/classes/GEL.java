@@ -1,10 +1,10 @@
 package interfacetask.classes;
 
-import interfacetask.interfaces.Money;
+import interfacetask.interfaces.IMoney;
 
 import java.util.Objects;
 
-public class GEL implements Money {
+public class GEL implements IMoney {
     private double money;
     private final String currencyName="GEL";
 

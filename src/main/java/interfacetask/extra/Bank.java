@@ -3,7 +3,7 @@ package interfacetask.extra;
 import interfacetask.classes.GEL;
 import interfacetask.classes.RUB;
 import interfacetask.classes.USD;
-import interfacetask.interfaces.Money;
+import interfacetask.interfaces.IMoney;
 
 public abstract class Bank {
     private USD balanceInUSD;
@@ -49,7 +49,7 @@ public abstract class Bank {
         this.balanceInRUB = balanceInRUB;
     }
 
-    public Money withdrawMoney(double money,String currency){
+    public IMoney withdrawMoney(double money, String currency){
         if(money<=0) throw new InvalidAmountException("Money amount must be more than 0");
         if(currency.equalsIgnoreCase("gel")){
             checkBalance(new GEL(money));
@@ -69,7 +69,7 @@ public abstract class Bank {
         return new USD(0);
     }
 
-    public void depositMoney(Money money){
+    public void depositMoney(IMoney money){
         checkValidDeposit(money);
         if(money instanceof GEL){
             balanceInGEL.setMoney(balanceInGEL.getMoney()+money.getMoney());
@@ -92,7 +92,7 @@ public abstract class Bank {
         return 0;
     }
 
-    private void checkBalance(Money money){
+    private void checkBalance(IMoney money){
         if(money instanceof GEL){
             if(balanceInGEL.getMoney()<money.getMoney()){
                 throw new InvalidAmountException ("Insufficient Balance");
@@ -110,7 +110,7 @@ public abstract class Bank {
         }
     }
 
-    private void checkValidDeposit(Money money){
+    private void checkValidDeposit(IMoney money){
         if(money.getMoney()<=0) throw new InvalidAmountException("You must deposit more than 0 " + money.getCurrencyName());
     }
 

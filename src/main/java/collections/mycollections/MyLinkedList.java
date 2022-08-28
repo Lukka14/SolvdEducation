@@ -1,5 +1,7 @@
 package collections.mycollections;
 
+import java.util.function.Function;
+
 class Link<T>{
     public Link<T> nextElement;
     public T data;

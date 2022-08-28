@@ -1,10 +1,10 @@
 package interfacetask.classes;
 
-import interfacetask.interfaces.Figure;
+import interfacetask.interfaces.IFigure;
 
 import java.util.Objects;
 
-public class Rectangle implements Figure {
+public class Rectangle implements IFigure {
     private double a;
     private double b;
 

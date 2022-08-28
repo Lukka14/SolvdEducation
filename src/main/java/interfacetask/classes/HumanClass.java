@@ -1,14 +1,14 @@
 package interfacetask.classes;
 
 import interfacetask.extra.Entity;
-import interfacetask.interfaces.Human;
+import interfacetask.interfaces.IHuman;
 import interfacetask.interfaces.IRun;
 import interfacetask.interfaces.ISwim;
 import interfacetask.interfaces.IFly;
 
 import java.util.Objects;
 
-public class HumanClass extends Entity implements Human, IFly, IRun, ISwim {
+public class HumanClass extends Entity implements IHuman, IFly, IRun, ISwim {
     private GEL money;
     private int birthYear;
     private String humanName;

@@ -1,6 +1,6 @@
 package interfacetask.interfaces;
 
-public interface Figure {
+public interface IFigure {
     double getP();
     double getS();
     double getD();
