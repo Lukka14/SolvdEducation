@@ -1,27 +1,35 @@
 package customexceptions.initial;
 
+import customexceptions.extra.HumanAge;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.Scanner;
 
-//Homework:
-//Add 5 collections to the hierarchy.
-//Create custom LinkedList with generic.
+//Create 5 custom exceptions.
+//Handle exceptions in 2 ways.
+//Use try-catch with resources.
 public class App {
     private static final Logger logger = LogManager.getLogger(App.class);
 
-    public static void main( String[] args ) {
-        List<String> arrayList=new ArrayList<>();
-        ArrayList<String> arrayList1=new ArrayList<>();
-        List<String> linkedList=new LinkedList<>();
-        nma(arrayList1);
+    public static void main( String[] args ) throws Exception {
+        try(HumanAge humanAge=new HumanAge(1,3,4,"bc")){
+            System.out.println(humanAge);
+        }
 
-    }
-    public static void nma(ArrayList<String> g){
-
-        return;
+        Scanner scanner=new Scanner(System.in);
+        System.out.print("Enter first integer value: ");
+        int a=scanner.nextInt();
+        System.out.print("Enter second integer value: ");
+        int b=scanner.nextInt();
+        try {
+            System.out.print(a +"/"+ b +"="+ a / b*1.0);
+        }
+        catch (ArithmeticException e) {
+            System.out.println(e);
+            System.out.print("Enter second integer value: ");
+            b = scanner.nextInt();
+            System.out.print(a +"/"+ b +"="+ a / b*1.0);
+        }
     }
 }

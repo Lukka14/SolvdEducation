@@ -43,13 +43,31 @@ public class Main {
         Main.display(hashset);
 
 
-        MyLinkedList<String> myLinkedList=new MyLinkedList<>();
-        myLinkedList.add("Johnie");
-        myLinkedList.add("Joshua");
-        System.out.println(myLinkedList.getLastElement());
+        MyLinkedList<String> csl = new MyLinkedList<String>();
+        csl.addFirst("Java");
+        csl.addFirst("Core");
+        csl.addLast("is");
+        csl.addLast("Great");
+        System.out.println(csl);
 
 
+        MyLinkedList<Integer> cslI = new MyLinkedList<Integer>();
+        cslI.addFirst(100);
+        cslI.addFirst(200);
+        cslI.addFirst(300);
+        cslI.addFirst(400);
+        cslI.addLast(50);
+        cslI.addLast(40);
+        cslI.addLast(30);
+        System.out.println(cslI.getSize());
+        System.out.println(cslI);
 
+        MyLinkedList i = new MyLinkedList();
+        i.addFirst('a');
+        i.addFirst("abc");
+        i.addFirst(123);
+        i.addLast(12.34);
+        System.out.println(i);
     }
 
     public static <T> void display(Collection<T> list){

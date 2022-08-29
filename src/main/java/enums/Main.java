@@ -6,13 +6,14 @@ package enums;
 // The main requirement is: using StringUtils and FileUtils to implement it with minimum lines of code.
 
 import enums.myenums.Directions;
+import enums.myenums.Phone;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringUtils;
 
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -44,8 +45,6 @@ public class Main {
             }
         }
         for(Map.Entry<String, Integer> entry : map.entrySet()) {
-            // do what you have to do here
-            // In your case, another loop.
             System.out.println(entry.getKey()+" "+entry.getValue());
         }
 
@@ -59,15 +58,12 @@ public class Main {
         }
         File result=new File("D:\\text\\result.txt");
         FileUtils.write(result,"It contains " + count+"x word "+word,"UTF-8", false);
-//        Desktop.getDesktop().open(result);
-
+        Desktop.getDesktop().open(result);
 
         Directions d=Directions.EAST;
         System.out.println(d.getDirName());
 
-        String test="test";
-        test=Arrays.toString(text.split("a"));
-        System.out.println(test);
-
+        Phone phone= Phone.IPHONE_X;
+        System.out.println(phone);
     }
 }

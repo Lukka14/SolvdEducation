@@ -1,34 +1,81 @@
 package collections.mycollections;
 
-import java.util.function.Function;
-
-class Link<T>{
-    public Link<T> nextElement;
-    public T data;
-    public Link(T data){
-        this.data=data;
-    }
-}
-
 public class MyLinkedList<T> {
-    private Link<T> FirstElement;
+        Node<T> ndStart = new Node<T>();
+        Node<T> ndEnd = new Node<T>();
+        int size;
 
-    public void add(T data){
-        Link<T> tmp=new Link<>(data);
-        tmp.nextElement=FirstElement;
-        FirstElement=tmp;
-    }
+        public MyLinkedList() {
 
-    public T getLastElement(){
-        return FirstElement.data;
-    }
-
-    public T getElement(int index){
-        Link<T> element=new Link<>(null);
-        for(int i=0;i<index;i++){
-            element.data=FirstElement.data;
+            ndStart=null;
+            ndEnd=null;
         }
-        return element.data;
-    }
 
+        public boolean isEmpty()
+        {
+            return ndStart==null;
+        }
+
+        public int getSize()
+        {
+            return size;
+        }
+
+        public void addLast(T data)
+        {
+            Node<T> newNode = new Node<T>(data,null);
+            if(ndStart==null)
+            {
+
+                ndStart=newNode;
+                ndEnd=newNode;
+            }
+            else
+            {
+
+                ndEnd.next=newNode;
+                ndEnd=newNode;
+            }
+            size++;
+        }
+
+        public void addFirst(T data)
+        {
+
+            Node<T> newNode = new Node<T>(data,null);
+            if(ndStart==null)
+            {
+
+                ndStart=newNode;
+                ndEnd=newNode;
+            }
+            else
+            {
+
+
+                newNode.next=ndStart;
+                ndStart=newNode;
+            }
+            size++;
+        }
+
+        public String toString() {
+            if (ndStart==null){
+                return("Empty");
+            }
+            Node nptr= ndStart;
+            String ret;
+            ret="[";
+
+            do{
+                ret=ret+nptr.data.toString() + ",";
+                nptr=nptr.next;
+            }
+            while (nptr!=null);
+
+            ret= ret.substring(0,ret.length()-1) + "]";
+
+            return ret;
+
+        }
 }
