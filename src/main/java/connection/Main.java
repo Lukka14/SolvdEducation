@@ -4,6 +4,7 @@ import connection.dao.jdbc.AnimalDAO;
 import connection.model.Animal;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import xml.School;
 
 import java.util.List;
 
@@ -19,5 +20,7 @@ public class Main {
 
         List<Animal> pets=petDAO.getAll();
         pets.forEach(System.out::println);
+
+        School school = new School();
     }
 }
