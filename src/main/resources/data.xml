@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!--    <schools>-->
+        <school name="STEM Academy">
+            <class>
+                <grade>VI</grade>
+                <students>14</students>
+                <lessons>Math English Science History</lessons>
+            </class>
+            <class>
+                <grade>IX</grade>
+                <students>11</students>
+                <lessons>PE Chemistry Science</lessons>
+            </class>
+        </school>
+<!--        <school name="Mind School">-->
+<!--            <class>-->
+<!--                <grade>X</grade>-->
+<!--                <students>26</students>-->
+<!--                <lessons>Math Science English Biology</lessons>-->
+<!--            </class>-->
+<!--        </school>-->
+<!--    </schools>-->

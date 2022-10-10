@@ -1,6 +1,7 @@
-package connection.dao.jdbc;
+package connection.dao.jdbcimpl;
 
-import connection.dao.IPetDAO;
+import connection.dao.interfaces.IPetDAO;
+import connection.dao.connector.ConnectionPool;
 import connection.dao.mysql.AbstractMySQLDAO;
 import connection.model.Pet;
 import org.apache.logging.log4j.LogManager;
@@ -19,7 +20,7 @@ public class PetDAO extends AbstractMySQLDAO implements IPetDAO {
     public void create(Pet object) {
         PreparedStatement ps=null;
         try {
-            ps=Conn.getConnection().prepareStatement("INSERT INTO pets(idpets,name,animalsid) VALUES(?,?,?)");
+            ps=  ConnectionPool.getInstance().retrieve().prepareStatement("INSERT INTO pets(idpets,name,animalsid) VALUES(?,?,?)");
             ps.setLong(1,object.getId());
             ps.setString(2,object.getName());
             ps.setLong(3,object.getAnimalId());
@@ -30,7 +31,6 @@ public class PetDAO extends AbstractMySQLDAO implements IPetDAO {
         } finally{
             try {
                 ps.close();
-                Conn.getConnection().close();
             } catch (SQLException e) {
                 logger.error(e);
                 e.printStackTrace();
@@ -43,7 +43,7 @@ public class PetDAO extends AbstractMySQLDAO implements IPetDAO {
         PreparedStatement ps=null;
         ResultSet rs=null;
         try {
-            ps = Conn.getConnection().prepareStatement("select * from pets where idpets=?");
+            ps =  ConnectionPool.getInstance().retrieve().prepareStatement("select * from pets where idpets=?");
             ps.setLong(1,id);
             rs = ps.executeQuery();
             rs.next();
@@ -55,7 +55,6 @@ public class PetDAO extends AbstractMySQLDAO implements IPetDAO {
             try {
                 rs.close();
                 ps.close();
-                Conn.getConnection().close();
             } catch (SQLException e) {
                 e.printStackTrace();
                 logger.error(e);
@@ -68,7 +67,7 @@ public class PetDAO extends AbstractMySQLDAO implements IPetDAO {
     public void remove(Long id) {
         PreparedStatement ps = null;
         try {
-            ps = Conn.getConnection().prepareStatement("DELETE FROM pets where idpets=?");
+            ps =  ConnectionPool.getInstance().retrieve().prepareStatement("DELETE FROM pets where idpets=?");
             ps.setLong(1,id);
             ps.executeUpdate();
         }catch (SQLException e){
@@ -77,7 +76,6 @@ public class PetDAO extends AbstractMySQLDAO implements IPetDAO {
         }finally {
             try{
                 ps.close();
-                Conn.getConnection().close();
             }catch (SQLException e){
                 e.printStackTrace();
                 logger.error(e);
@@ -90,7 +88,7 @@ public class PetDAO extends AbstractMySQLDAO implements IPetDAO {
     public void update(Pet object) {
         PreparedStatement ps=null;
         try {
-            ps=Conn.getConnection().prepareStatement("update pets set animalsid=?,name=? where idpets=?");
+            ps= ConnectionPool.getInstance().retrieve().prepareStatement("update pets set animalsid=?,name=? where idpets=?");
             ps.setLong(1,object.getAnimalId());
             ps.setString(2,object.getName());
             ps.setLong(3,object.getId());
@@ -101,7 +99,6 @@ public class PetDAO extends AbstractMySQLDAO implements IPetDAO {
         }finally {
             try{
                 ps.close();
-                Conn.getConnection().close();
             }catch (SQLException e){
                 e.printStackTrace();
                 logger.error(e);
@@ -114,7 +111,7 @@ public class PetDAO extends AbstractMySQLDAO implements IPetDAO {
         PreparedStatement ps=null;
         ResultSet rs=null;
         try{
-            ps=Conn.getConnection().prepareStatement("select COUNT(*) from pets");
+            ps=ConnectionPool.getInstance().retrieve().prepareStatement("select COUNT(*) from pets");
             rs = ps.executeQuery();;
             rs.next();
             int count = rs.getInt(1);
@@ -130,7 +127,6 @@ public class PetDAO extends AbstractMySQLDAO implements IPetDAO {
             try{
                 rs.close();
                 ps.close();
-                Conn.getConnection().close();
             }catch (SQLException e){
                 e.printStackTrace();
                 logger.warn(e);

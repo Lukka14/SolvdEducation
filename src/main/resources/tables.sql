@@ -23,7 +23,7 @@ USE `mydb` ;
 CREATE TABLE IF NOT EXISTS `mydb`.`professions` (
   `idprofessions` INT NOT NULL,
   `name` VARCHAR(45) NULL,
-  `salary` VARCHAR(45) NULL,
+  `salary` INT NULL,
   PRIMARY KEY (`idprofessions`))
 ENGINE = InnoDB;
 

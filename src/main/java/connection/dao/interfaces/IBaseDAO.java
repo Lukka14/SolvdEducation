@@ -1,4 +1,4 @@
-package connection.dao;
+package connection.dao.interfaces;
 
 public interface IBaseDAO<T> {
     void create(T object);

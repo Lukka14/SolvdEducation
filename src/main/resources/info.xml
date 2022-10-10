@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<school name="Western public school">
+    <grade>IV</grade>
+    <students>226</students>
+    <subjects>Chemistry</subjects>
+    <subjects>Math</subjects>
+</school>

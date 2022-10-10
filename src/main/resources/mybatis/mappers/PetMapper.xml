@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Pet">
+    <resultMap id="result" type="Pet">
+        <result property="id" column="idpets"/>
+        <result property="name" column="name"/>
+        <result property="animalId" column="animalsid"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="Pet">
+        INSERT INTO pets (idpets,name,animalsid)
+        VALUES (#{id},#{name},#{animalId});
+    </insert>
+
+    <delete id="remove" parameterType="int">
+        DELETE FROM pets WHERE idpets=#{id};
+    </delete>
+
+    <update id="update" parameterType="Pet">
+        UPDATE pets SET name=#{name}, animalsid=#{animalId} WHERE idpets=#{id};
+    </update>
+
+    <select id="getById" parameterType="int" resultMap="result">
+        SELECT * FROM pets WHERE idpets=#{id};
+    </select>
+
+    <select id="getAll" resultMap="result">
+        SELECT * FROM pets;
+    </select>
+
+</mapper>

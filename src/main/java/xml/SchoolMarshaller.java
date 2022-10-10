@@ -18,7 +18,7 @@ public class SchoolMarshaller {
             e.printStackTrace();
         }
     }
-    public School unMarshaller(String fileName){
+    public School unMarshall(String fileName){
         try{
             JAXBContext context = JAXBContext.newInstance(School.class);
             return (School) context.createUnmarshaller()

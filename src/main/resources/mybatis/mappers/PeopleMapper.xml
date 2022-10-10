@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="People">
+
+    <resultMap id="result" type="People">
+        <result property="id" column="idpeople"/>
+        <result property="firstName" column="first_name"/>
+        <result property="lastName" column="last_name"/>
+        <result property="professionId" column="professionsid"/>
+        <result property="carId" column="carsid"/>
+        <result property="petId" column="pets_idpets"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="People">
+        INSERT INTO people (idpeople, first_name,last_name,professionsid,carsid,pets_idpets)
+        VALUES (#{id},#{firstName},#{lastName},#{professionId},#{carId},#{petId});
+    </insert>
+
+    <delete id="remove" parameterType="int">
+        DELETE FROM people WHERE idpeople=#{id};
+    </delete>
+
+    <update id="update" parameterType="People">
+        UPDATE people SET first_name=#{firstName},last_name=#{lastName},professionsid=#{professionId},
+        carsid=#{carId},pets_idpets=#{petId} WHERE idpeople=#{id};
+    </update>
+
+    <select id="getById" parameterType="int" resultMap="result">
+        SELECT * FROM people WHERE idpeople=#{id};
+    </select>
+
+    <select id="getAll" resultMap="result">
+        SELECT * FROM people;
+    </select>
+
+</mapper>

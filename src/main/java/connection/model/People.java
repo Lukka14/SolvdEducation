@@ -7,8 +7,11 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Animal {
+public class People {
     private Long id;
-    private String type;
-    private String weight;
+    private String firstName;
+    private String lastName;
+    private Long professionId;
+    private Long carId;
+    private Long petId;
 }

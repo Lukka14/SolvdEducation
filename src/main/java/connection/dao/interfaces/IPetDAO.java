@@ -1,4 +1,4 @@
-package connection.dao;
+package connection.dao.interfaces;
 
 import connection.model.Pet;
 

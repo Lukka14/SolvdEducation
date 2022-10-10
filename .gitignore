@@ -1,1 +1,5 @@
 /src/main/resources/datasource.properties
+/target/
+/src/test/
+/logs/
+/.idea/

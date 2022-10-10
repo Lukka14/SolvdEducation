@@ -7,8 +7,9 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Animal {
+public class Country {
     private Long id;
-    private String type;
-    private String weight;
+    private String name;
+    private String location;
+    private Long flagId;
 }
